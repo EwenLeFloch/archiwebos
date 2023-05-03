@@ -1,3 +1,5 @@
+import { isLoggedIn } from "./login.js";
+
 const gallery = document.querySelector(".gallery");
 const categoryButtons = document.querySelector(".category-buttons");
 //Variable pour stocker les données des travaux récupérés
@@ -63,4 +65,20 @@ function displayCategories(categories) {
 			displayWorks(worksToSHow);
 		});
 	}
+}
+
+const loginButton = document.querySelector("#login");
+const logoutButton = document.querySelector("#logout");
+
+if (isLoggedIn()) {
+	loginButton.style = "display: none;";
+	logoutButton.style = "display: flex;";
+
+	//Pour se log out
+	logoutButton.addEventListener("click", () => {
+		localStorage.removeItem("token");
+		window.location.href = "login.html";
+	});
+} else {
+	logoutButton.style = "display: none;";
 }

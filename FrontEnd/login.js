@@ -33,3 +33,8 @@ export function isLoggedIn() {
 	const token = localStorage.getItem("token");
 	return token !== null;
 }
+
+export function logOut() {
+	localStorage.removeItem("token");
+	window.location.href = "login.html";
+}

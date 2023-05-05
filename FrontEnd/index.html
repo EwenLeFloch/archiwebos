@@ -10,18 +10,33 @@
 			href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap"
 			rel="stylesheet"
 		/>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+			integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		/>
 		<meta name="description" content="" />
 		<link rel="stylesheet" href="./assets/style.css" />
 		<script type="module" src="works.js"></script>
 	</head>
 	<body>
+		<div class="edit editBar">
+			<p class="editBar__text">
+				<i class="fa-solid fa-pen-to-square"></i>
+				mode édition
+			</p>
+			<button class="editBar__button">publier les changements</button>
+		</div>
 		<header>
 			<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
 			<nav>
 				<ul>
-					<li>projets</li>
-					<li>contact</li>
-					<li>login</li>
+					<li><a href="#portfolio">projets</a></li>
+					<li><a href="#contact">contact</a></li>
+					<li id="login"><a href="login.html">login</a></li>
+					<li class="edit" id="logout">logout</li>
 					<li>
 						<img
 							src="./assets/icons/instagram.png"
@@ -35,6 +50,12 @@
 			<section id="introduction">
 				<figure>
 					<img src="./assets/images/sophie-bluel.png" alt="" />
+					<figcaption class="edit" id="profile-picture__figcaption">
+						<a href="#"
+							><i class="fa-solid fa-pen-to-square"></i>
+							modifier</a
+						>
+					</figcaption>
 				</figure>
 				<article>
 					<h2>Designer d'espace</h2>
@@ -57,8 +78,23 @@
 					</p>
 				</article>
 			</section>
+			<dialog id="dialog">
+				<button id="cancel">
+					<i class="fa-solid fa-close"></i>
+				</button>
+				<h3>Galerie photo</h3>
+				<div id="edit__gallery"></div>
+				<hr />
+				<button id="addWork">Ajouter une photo</button>
+				<button id="deleteAll">Supprimer la galerie</button>
+			</dialog>
 			<section id="portfolio">
-				<h2>Mes Projets</h2>
+				<div id="portfolio__title-container">
+					<h2>Mes Projets</h2>
+					<button class="edit" id="showDialog">
+						<i class="fa-solid fa-pen-to-square"></i> modifier
+					</button>
+				</div>
 				<div class="category-buttons">
 					<button class="tous">Tous</button>
 				</div>

@@ -29,6 +29,11 @@ function displayWorks(works, container, isModal = false) {
 		//Figure
 		const figureElement = document.createElement("figure");
 		gallery.appendChild(figureElement);
+
+		// Ajout d'un identifiant pour la suppression
+		const figureId = `works-${work.id}`;
+		figureElement.id = figureId;
+
 		if (isModal) {
 			//icones
 			const deleteButton = document.createElement("button");
@@ -39,6 +44,36 @@ function displayWorks(works, container, isModal = false) {
 			deleteButton.appendChild(deleteIcon);
 			figureElement.appendChild(deleteButton);
 
+			deleteButton.addEventListener("click", async (event) => {
+				event.preventDefault();
+				const token = localStorage.getItem("token");
+				try {
+					const response = await fetch(
+						`http://localhost:5678/api/works/${work.id}`,
+						{
+							method: "DELETE",
+							headers: {
+								accept: "*/*",
+								Authorization: `Bearer ${token}`,
+								Contenttype: "application/json",
+							},
+						}
+					);
+					if (response.ok) {
+						//Suppression dans la modal
+						figureElement.remove();
+
+						//Suppression dans l'index.
+						const indexFigureElement = document.querySelector(
+							`#${figureId}`
+						);
+						indexFigureElement.remove();
+					}
+				} catch (error) {
+					console.error("Erreur lors de l'envoi des données");
+				}
+			});
+
 			const moveButton = document.createElement("button");
 			moveButton.classList.add("move-button");
 			const moveIcon = document.createElement("i");
@@ -47,7 +82,6 @@ function displayWorks(works, container, isModal = false) {
 			moveButton.appendChild(moveIcon);
 			figureElement.appendChild(moveButton);
 		}
-
 		// Images
 		const imageElement = document.createElement("img");
 		imageElement.src = work.imageUrl;
@@ -79,16 +113,16 @@ function displayCategories(categories) {
 			}
 			buttonElement.classList.add("active");
 
-			const worksToSHow = works.filter(
+			const worksToShow = works.filter(
 				(work) => work.category.name === category.name
 			);
 			//Affiche les travaux filtrés
-			displayWorks(worksToSHow, ".gallery");
+			displayWorks(worksToShow, ".gallery");
 		});
 	}
 }
 
-async function displayEdition() {
+function displayEdition() {
 	const loginButton = document.querySelector("#login");
 	const logoutButton = document.querySelector("#logout");
 	const edit = document.getElementsByClassName("edit");

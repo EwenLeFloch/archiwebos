@@ -321,20 +321,19 @@ main {
 	gap: 15px;
 }
 #dialog {
-	width: 50%;
+	max-width: 40%;
 	flex-direction: column;
-	justify-content: space-evenly;
+	justify-content: space-between;
 	align-items: center;
 	gap: 30px;
 	border-radius: 10px;
 	border: none;
 }
 #cancel {
+	align-self: flex-end;
 	border: none;
 	background-color: white;
 	font-size: 16px;
-	align-self: flex-end;
-	position: relative;
 }
 h3 {
 	font-size: 26px;

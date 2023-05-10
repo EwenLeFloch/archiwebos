@@ -29,8 +29,11 @@
 			</p>
 			<button class="editBar__button">publier les changements</button>
 		</div>
-		<header>
-			<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
+		<header class="header">
+			<h1 class="header__title">
+				Sophie Bluel
+				<span class="header__subtitle">Architecte d'intérieur</span>
+			</h1>
 			<nav class="navigation">
 				<ul class="navigation__menu">
 					<li class="navigation__menu__item">
@@ -46,11 +49,13 @@
 						logout
 					</li>
 					<li class="navigation__menu__item">
-						<img
-							class="navigation__menu__item__icon"
-							src="./assets/icons/instagram.png"
-							alt="Instagram"
-						/>
+						<a href="#">
+							<img
+								class="navigation__menu__item__icon"
+								src="./assets/icons/instagram.png"
+								alt="Instagram"
+							/>
+						</a>
 					</li>
 				</ul>
 			</nav>
@@ -65,7 +70,7 @@
 					/>
 					<figcaption
 						class="introduction__figure__lien edit"
-						id="profile-picture__figcaption"
+						id="introduction__figcaption"
 					>
 						<a href="#"
 							><i class="fa-solid fa-pen-to-square"></i>
@@ -74,7 +79,10 @@
 					</figcaption>
 				</figure>
 				<article class="introduction__text">
-					<h2>Designer d'espace</h2>
+					<a class="edit" href="#"
+						><i class="fa-solid fa-pen-to-square"></i> modifier</a
+					>
+					<h2 class="introduction__title">Designer d'espace</h2>
 					<p>
 						Je raconte votre histoire, je valorise vos idées. Je
 						vous accompagne de la conception à la livraison finale
@@ -94,86 +102,100 @@
 					</p>
 				</article>
 			</section>
+
+			<!-- LA MODALE -->
+
 			<dialog id="dialog">
-				<div class="delete-modal">
-					<button class="cancel">
-						<i class="fa-solid fa-close"></i>
-					</button>
-					<h3>Galerie photo</h3>
-					<div id="edit__gallery"></div>
-					<hr />
-					<button id="addWork">Ajouter une photo</button>
-					<button id="deleteAll">Supprimer la galerie</button>
-				</div>
-				<div class="add-modal">
-					<div class="back-cancel__bar">
-						<button id="back">
-							<i class="fa-solid fa-arrow-left"></i>
-						</button>
+				<div id="modal">
+					<div class="delete-modal">
 						<button class="cancel">
 							<i class="fa-solid fa-close"></i>
 						</button>
+						<h3>Galerie photo</h3>
+						<div id="edit__gallery"></div>
+						<hr />
+						<button id="addWork">Ajouter une photo</button>
+						<button id="deleteAll">Supprimer la galerie</button>
 					</div>
-					<h3>Ajout photo</h3>
-					<form id="form-ajout">
-						<div class="content-image">
-							<img id="preview-image" />
-							<i class="fa-regular fa-image"></i>
-							<div class="files-input__container">
-								<label for="files" class="button-image"
-									>+ Ajouter photo</label
+					<div class="add-modal">
+						<div class="back-cancel__bar">
+							<button id="back">
+								<i class="fa-solid fa-arrow-left"></i>
+							</button>
+							<button class="cancel">
+								<i class="fa-solid fa-close"></i>
+							</button>
+						</div>
+						<h3>Ajout photo</h3>
+						<form id="form-ajout">
+							<div class="content-image">
+								<img id="preview-image" />
+								<i class="fa-regular fa-image"></i>
+								<div class="files-input__container">
+									<label for="files" class="button-image"
+										>+ Ajouter photo</label
+									>
+									<input
+										id="files"
+										type="file"
+										name="imageUrl"
+										class="add-input"
+										required
+									/>
+									<p>jpg, png : 4mo max</p>
+								</div>
+							</div>
+							<div class="input__container">
+								<label for="title-label" class="label"
+									>Titre</label
 								>
 								<input
-									id="files"
-									type="file"
-									name="imageUrl"
+									name="title"
+									id="title"
+									class="add-input"
+									type="text"
 									required
 								/>
-								<p>jpg, png : 4mo max</p>
 							</div>
-						</div>
-						<div class="input__container">
-							<label for="title-label" class="label">Titre</label>
-							<input
-								name="title"
-								id="title"
-								class="add-input"
-								type="text"
-								required
-							/>
-						</div>
-						<div class="input__container">
-							<label for="category-label" class="label"
-								>Catégorie</label
-							>
-							<select
-								name="category"
-								id="category"
-								class="add-input"
-								required
-							>
-								<option value=""></option>
-							</select>
-						</div>
+							<div class="input__container">
+								<label for="category-label" class="label"
+									>Catégorie</label
+								>
+								<select
+									name="category"
+									id="category"
+									class="add-input"
+									required
+								>
+									<option value=""></option>
+								</select>
+							</div>
 
-						<hr />
-						<input
-							id="submit-button"
-							type="submit"
-							value="Valider"
-						/>
-					</form>
+							<hr />
+							<input
+								id="submit-button"
+								type="submit"
+								value="Valider"
+							/>
+						</form>
+					</div>
 				</div>
 			</dialog>
+
+			<!-- FIN DE LA MODALE -->
+
 			<section id="portfolio">
-				<div id="portfolio__title-container">
+				<div class="portfolio__title__container">
 					<h2>Mes Projets</h2>
 					<button class="edit" id="showDialog">
 						<i class="fa-solid fa-pen-to-square"></i> modifier
 					</button>
 				</div>
-				<div class="category-buttons">
-					<button class="tous">Tous</button>
+
+				<div class="portfolio__categories">
+					<button class="tous portfolio__categories__button active">
+						Tous
+					</button>
 				</div>
 				<div class="gallery"></div>
 			</section>

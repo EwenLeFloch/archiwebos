@@ -2,7 +2,7 @@ import { openEditor, closeEditor, addWorkEditor } from "./editor.js";
 
 let works = [];
 let token;
-const categoryButtons = document.querySelector(".category-buttons");
+const categoryButtons = document.querySelector(".portfolio__categories");
 
 try {
 	const response = await fetch("http://localhost:5678/api/works");
@@ -106,11 +106,10 @@ function displayWorks(works, container, isModal = false) {
 
 function displayCategories(categories) {
 	const allCategories = document.querySelector(".tous");
-	allCategories.addEventListener("click", () => {
-		displayWorks(works, ".gallery");
-	});
+
 	for (let category of categories) {
 		const buttonElement = document.createElement("button");
+		buttonElement.classList.add("portfolio__categories__button");
 		buttonElement.innerText = category.name;
 		categoryButtons.appendChild(buttonElement);
 
@@ -121,12 +120,19 @@ function displayCategories(categories) {
 				activeButton.classList.remove("active");
 			}
 			buttonElement.classList.add("active");
-
 			const worksToShow = works.filter(
 				(work) => work.category.name === category.name
 			);
 			//Affiche les travaux filtrés
 			displayWorks(worksToShow, ".gallery");
+		});
+		allCategories.addEventListener("click", () => {
+			const activeButton = document.querySelector(".active");
+			if (activeButton) {
+				activeButton.classList.remove("active");
+			}
+			allCategories.classList.add("active");
+			displayWorks(works, ".gallery");
 		});
 	}
 }

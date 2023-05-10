@@ -1,6 +1,7 @@
-const loginForm = document.querySelector("#form-login");
+const loginForm = document.querySelector("#login__form");
 const emailInput = document.querySelector("#email");
 const passwordInput = document.querySelector("#password");
+const errorMessage = document.querySelector("#login__error");
 
 loginForm.addEventListener("submit", async (event) => {
 	event.preventDefault();
@@ -22,7 +23,7 @@ loginForm.addEventListener("submit", async (event) => {
 			localStorage.setItem("token", token);
 			window.location.href = "index.html";
 		} else {
-			alert("Adresse email ou mot de passe incorrect");
+			errorMessage.style.display = "block";
 		}
 	} catch (error) {
 		console.log(error);

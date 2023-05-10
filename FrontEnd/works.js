@@ -1,10 +1,8 @@
-import { isLoggedIn, logOut } from "./login.js";
-import { openEditor, closeEditor } from "./editor.js";
+import { openEditor, closeEditor, addWorkEditor } from "./editor.js";
 
-const categoryButtons = document.querySelector(".category-buttons");
-
-//Variable pour stocker les données des travaux récupérés
 let works = [];
+let token;
+const categoryButtons = document.querySelector(".category-buttons");
 
 try {
 	const response = await fetch("http://localhost:5678/api/works");
@@ -18,8 +16,19 @@ try {
 	const categories = await response2.json();
 
 	displayCategories(categories);
+	addWorkEditor(categories);
 } catch (error) {
 	console.error(error);
+}
+
+function isLoggedIn() {
+	token = localStorage.getItem("token");
+	return token !== null;
+}
+
+function logOut() {
+	localStorage.removeItem("token");
+	window.location.href = "login.html";
 }
 
 function displayWorks(works, container, isModal = false) {
@@ -145,7 +154,7 @@ function displayEdition() {
 		});
 	}
 }
-displayEdition();
 
+displayEdition();
 openEditor();
 closeEditor();

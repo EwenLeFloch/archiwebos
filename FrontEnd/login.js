@@ -1,4 +1,4 @@
-const loginForm = document.querySelector("form");
+const loginForm = document.querySelector("#form-login");
 const emailInput = document.querySelector("#email");
 const passwordInput = document.querySelector("#password");
 
@@ -29,13 +29,3 @@ loginForm.addEventListener("submit", async (event) => {
 		alert("Une erreur est survenue, veuillez réessayer plus tard.");
 	}
 });
-
-export function isLoggedIn() {
-	const token = localStorage.getItem("token");
-	return token !== null;
-}
-
-export function logOut() {
-	localStorage.removeItem("token");
-	window.location.href = "login.html";
-}

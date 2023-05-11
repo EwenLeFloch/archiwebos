@@ -161,6 +161,58 @@ function displayEdition() {
 	}
 }
 
+//Permet de poster un nouveau travail
+const formAjout = document.querySelector("#form-ajout");
+const validateButton = document.querySelector("#submit-button");
+const fileInput = document.querySelector("#files");
+
+formAjout.addEventListener("input", function () {
+	let inputs = formAjout.querySelectorAll(".add-input");
+	let isFormvalid = true;
+
+	for (let i = 0; i < inputs.length; i++) {
+		if (!inputs[i].value) {
+			isFormvalid = false;
+			break;
+		}
+	}
+
+	if (isFormvalid) {
+		validateButton.style.background = "#1d6154";
+	}
+});
+
+formAjout.addEventListener("submit", async (e) => {
+	e.preventDefault();
+	const imageUrl = fileInput.files[0];
+	const title = document.querySelector("#title").value;
+	const category = parseInt(document.querySelector("#category").value);
+
+	const formData = new FormData();
+	formData.append("image", imageUrl);
+	formData.append("title", title);
+	formData.append("category", category);
+	try {
+		const response = await fetch("http://localhost:5678/api/works", {
+			method: "POST",
+			headers: {
+				Authorization: `Bearer ${token}`,
+			},
+			body: formData,
+		});
+		if (response.ok) {
+			let newWork = await response.json();
+			works.push(newWork);
+			displayWorks(works, ".gallery");
+			displayWorks(works, "#edit__gallery", true);
+		} else {
+			console.error("Erreur lors de l'envoi des donnees");
+		}
+	} catch (error) {
+		console.error(error);
+	}
+});
+
 displayEdition();
 openEditor();
 closeEditor();

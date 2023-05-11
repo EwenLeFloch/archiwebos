@@ -28,30 +28,10 @@ export function closeEditor() {
 }
 
 export function addWorkEditor(categories) {
-	const token = localStorage.getItem("token");
 	const deleteModal = document.querySelector(".delete-modal");
 	const addModal = document.querySelector(".add-modal");
 	const addWork = document.querySelector("#addWork");
 	const returnButton = document.querySelector("#back");
-
-	const fileInput = document.querySelector("#files");
-	const previewImage = document.querySelector("#preview-image");
-
-	fileInput.addEventListener("change", () => {
-		const file = fileInput.files[0];
-		const reader = new FileReader();
-
-		reader.addEventListener("load", () => {
-			previewImage.src = reader.result;
-		});
-
-		previewImage.style = "display: block";
-		document.querySelector(".files-input__container").style =
-			"display: none;";
-		if (file) {
-			reader.readAsDataURL(file);
-		}
-	});
 
 	//Permet de visualiser l'image selectionee
 

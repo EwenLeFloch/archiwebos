@@ -525,7 +525,8 @@ hr {
 	font-weight: bold;
 }
 #login__error,
-#ajout-error {
+#ajout-error,
+#size-error {
 	align-self: center;
 	color: #d65353;
 	display: none;

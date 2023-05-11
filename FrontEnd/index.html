@@ -135,6 +135,9 @@
 							<img id="preview-image" />
 							<i class="fa-regular fa-image"></i>
 							<div class="files-input__container">
+								<p id="size-error">
+									L'image ne doit pas dépasser 4mo
+								</p>
 								<label for="files" class="button-image"
 									>+ Ajouter photo</label
 								>
@@ -143,6 +146,7 @@
 									type="file"
 									name="imageUrl"
 									class="add-input"
+									accept="image/jpg, image/jpeg, image/png"
 								/>
 								<p>jpg, png : 4mo max</p>
 							</div>

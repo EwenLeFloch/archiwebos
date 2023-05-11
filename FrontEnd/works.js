@@ -171,6 +171,34 @@ function displayEdition() {
 const formAjout = document.querySelector("#form-ajout");
 const validateButton = document.querySelector("#submit-button");
 const fileInput = document.querySelector("#files");
+const previewImage = document.querySelector("#preview-image");
+
+fileInput.addEventListener("change", () => {
+	const file = fileInput.files[0];
+	if (file.size / (1024 * 1024) > 4) {
+		document.querySelector("#size-error").style.display = "flex";
+	} else {
+		const reader = new FileReader();
+
+		reader.addEventListener("load", () => {
+			previewImage.src = reader.result;
+			previewImage.style = "display: block";
+			document.querySelector(".files-input__container").style =
+				"display: none;";
+		});
+
+		if (file) {
+			reader.readAsDataURL(file);
+		}
+	}
+});
+
+previewImage.addEventListener("click", () => {
+	fileInput.value = "";
+	previewImage.src = "#";
+	previewImage.style.display = "none";
+	document.querySelector(".files-input__container").style = "display: flex;";
+});
 
 formAjout.addEventListener("input", function () {
 	let inputs = formAjout.querySelectorAll(".add-input");
@@ -215,6 +243,7 @@ formAjout.addEventListener("submit", async (e) => {
 			const dialog = document.querySelector("#dialog");
 			dialog.close();
 			dialog.style = "display: none;";
+			formAjout.reset();
 		} else {
 			document.querySelector("#ajout-error").style.display = "flex";
 		}

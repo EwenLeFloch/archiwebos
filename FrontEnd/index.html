@@ -106,78 +106,78 @@
 			<!-- LA MODALE -->
 
 			<dialog id="dialog">
-				<div id="modal">
-					<div class="delete-modal">
+				<div class="delete-modal">
+					<button class="cancel">
+						<i class="fa-solid fa-close"></i>
+					</button>
+					<h3>Galerie photo</h3>
+					<div id="edit__gallery"></div>
+					<hr />
+					<button id="addWork">Ajouter une photo</button>
+					<button id="deleteAll">Supprimer la galerie</button>
+				</div>
+				<div class="add-modal">
+					<div class="back-cancel__bar">
+						<button id="back">
+							<i class="fa-solid fa-arrow-left"></i>
+						</button>
 						<button class="cancel">
 							<i class="fa-solid fa-close"></i>
 						</button>
-						<h3>Galerie photo</h3>
-						<div id="edit__gallery"></div>
-						<hr />
-						<button id="addWork">Ajouter une photo</button>
-						<button id="deleteAll">Supprimer la galerie</button>
 					</div>
-					<div class="add-modal">
-						<div class="back-cancel__bar">
-							<button id="back">
-								<i class="fa-solid fa-arrow-left"></i>
-							</button>
-							<button class="cancel">
-								<i class="fa-solid fa-close"></i>
-							</button>
-						</div>
-						<h3>Ajout photo</h3>
-						<form id="form-ajout">
-							<div class="content-image">
-								<img id="preview-image" />
-								<i class="fa-regular fa-image"></i>
-								<div class="files-input__container">
-									<label for="files" class="button-image"
-										>+ Ajouter photo</label
-									>
-									<input
-										id="files"
-										type="file"
-										name="imageUrl"
-										class="add-input"
-									/>
-									<p>jpg, png : 4mo max</p>
-								</div>
-							</div>
-							<div class="input__container">
-								<label for="title-label" class="label"
-									>Titre</label
+					<h3>Ajout photo</h3>
+					<form id="form-ajout">
+						<p id="ajout-error">
+							Veuillez remplir tous les champs et sélectionner une
+							image
+						</p>
+						<div class="content-image">
+							<img id="preview-image" />
+							<i class="fa-regular fa-image"></i>
+							<div class="files-input__container">
+								<label for="files" class="button-image"
+									>+ Ajouter photo</label
 								>
 								<input
-									name="title"
-									id="title"
+									id="files"
+									type="file"
+									name="imageUrl"
 									class="add-input"
-									type="text"
-									required
 								/>
+								<p>jpg, png : 4mo max</p>
 							</div>
-							<div class="input__container">
-								<label for="category-label" class="label"
-									>Catégorie</label
-								>
-								<select
-									name="category"
-									id="category"
-									class="add-input"
-									required
-								>
-									<option value=""></option>
-								</select>
-							</div>
-
-							<hr />
+						</div>
+						<div class="input__container">
+							<label for="title-label" class="label">Titre</label>
 							<input
-								id="submit-button"
-								type="submit"
-								value="Valider"
+								name="title"
+								id="title"
+								class="add-input"
+								type="text"
+								required
 							/>
-						</form>
-					</div>
+						</div>
+						<div class="input__container">
+							<label for="category-label" class="label"
+								>Catégorie</label
+							>
+							<select
+								name="category"
+								id="category"
+								class="add-input"
+								required
+							>
+								<option value=""></option>
+							</select>
+						</div>
+
+						<hr />
+						<input
+							id="submit-button"
+							type="submit"
+							value="Valider"
+						/>
+					</form>
 				</div>
 			</dialog>
 

@@ -99,7 +99,13 @@ function displayWorks(works, container, isModal = false) {
 
 		// Figcaption
 		const figcaptionElement = document.createElement("figcaption");
-		figcaptionElement.innerText = isModal ? "éditer" : work.title;
+		if (isModal) {
+			figcaptionElement.innerText = "éditer";
+			figcaptionElement.style.cursor = "pointer";
+		} else {
+			figcaptionElement.innerText = work.title;
+		}
+
 		figureElement.appendChild(figcaptionElement);
 	}
 }
@@ -205,12 +211,25 @@ formAjout.addEventListener("submit", async (e) => {
 			works.push(newWork);
 			displayWorks(works, ".gallery");
 			displayWorks(works, "#edit__gallery", true);
+
+			const dialog = document.querySelector("#dialog");
+			dialog.close();
+			dialog.style = "display: none;";
 		} else {
-			console.error("Erreur lors de l'envoi des donnees");
+			document.querySelector("#ajout-error").style.display = "flex";
 		}
 	} catch (error) {
 		console.error(error);
 	}
+});
+
+//Permet d'afficher la scrollbar de la gallery de la modal
+const editGallery = document.querySelector("#edit__gallery");
+editGallery.addEventListener("mouseover", () => {
+	editGallery.style = "overflow-y: scroll";
+});
+editGallery.addEventListener("mouseout", () => {
+	editGallery.style = "overflow-y: hidden";
 });
 
 displayEdition();

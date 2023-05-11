@@ -243,7 +243,16 @@ formAjout.addEventListener("submit", async (e) => {
 			const dialog = document.querySelector("#dialog");
 			dialog.close();
 			dialog.style = "display: none;";
+
 			formAjout.reset();
+			fileInput.value = "";
+			previewImage.src = "#";
+			previewImage.style.display = "none";
+			document.querySelector(".files-input__container").style =
+				"display: flex;";
+
+			document.querySelector(".delete-modal").style = "display: flex;";
+			document.querySelector(".add-modal").style = "display: none;";
 		} else {
 			document.querySelector("#ajout-error").style.display = "flex";
 		}

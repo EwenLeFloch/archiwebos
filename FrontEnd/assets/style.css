@@ -288,6 +288,7 @@ footer nav ul {
 	border: none;
 	margin: auto;
 	padding: 0;
+	overflow: hidden;
 }
 #modal {
 	height: 100%;
@@ -375,7 +376,8 @@ hr {
 	background-color: white;
 	color: #d65353;
 	font-weight: normal;
-	margin-bottom: 20px;
+	position: relative;
+	bottom: 20px;
 }
 .move-button,
 .delete-button {

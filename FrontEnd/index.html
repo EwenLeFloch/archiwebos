@@ -19,7 +19,7 @@
 		/>
 		<meta name="description" content="" />
 		<link rel="stylesheet" href="./assets/style.css" />
-		<script type="module" src="works.js" defer></script>
+		<script type="module" src="works.js"></script>
 	</head>
 	<body>
 		<div class="edit editBar">
@@ -78,7 +78,7 @@
 						>
 					</figcaption>
 				</figure>
-				<article class="introduction__text">
+				<div class="introduction__text">
 					<a class="edit" href="#"
 						><i class="fa-solid fa-pen-to-square"></i> modifier</a
 					>
@@ -100,7 +100,7 @@
 						peut-être constituée : architecte DPLG,
 						décorateur(trice)
 					</p>
-				</article>
+				</div>
 			</section>
 
 			<!-- LA MODALE -->
@@ -132,7 +132,7 @@
 							image
 						</p>
 						<div class="content-image">
-							<img id="preview-image" />
+							<img id="preview-image" src="#" alt="" />
 							<i class="fa-regular fa-image"></i>
 							<div class="files-input__container">
 								<p id="size-error">
@@ -152,7 +152,7 @@
 							</div>
 						</div>
 						<div class="input__container">
-							<label for="title-label" class="label">Titre</label>
+							<label for="title" class="label">Titre</label>
 							<input
 								name="title"
 								id="title"
@@ -162,7 +162,7 @@
 							/>
 						</div>
 						<div class="input__container">
-							<label for="category-label" class="label"
+							<label for="category" class="label"
 								>Catégorie</label
 							>
 							<select
@@ -171,7 +171,7 @@
 								class="add-input"
 								required
 							>
-								<option value=""></option>
+								<option hidden label=" "></option>
 							</select>
 						</div>
 

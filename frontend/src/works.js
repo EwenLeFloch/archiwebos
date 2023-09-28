@@ -5,14 +5,16 @@ let token;
 const categoryButtons = document.querySelector(".portfolio__categories");
 
 try {
-	const response = await fetch("http://localhost:5678/api/works");
+	const response = await fetch("https://archiwebos.onrender.com/api/works");
 	const worksData = await response.json();
 	works = worksData;
 
 	displayWorks(works, ".gallery");
 	displayWorks(works, "#edit__gallery", true);
 
-	const response2 = await fetch("http://localhost:5678/api/categories");
+	const response2 = await fetch(
+		"https://archiwebos.onrender.com/api/categories"
+	);
 	const categories = await response2.json();
 
 	displayCategories(categories);
@@ -58,7 +60,7 @@ function displayWorks(works, container, isModal = false) {
 				const token = localStorage.getItem("token");
 				try {
 					const response = await fetch(
-						`http://localhost:5678/api/works/${work.id}`,
+						`https://archiwebos.onrender.com/api/works/${work.id}`,
 						{
 							method: "DELETE",
 							headers: {
@@ -227,13 +229,16 @@ formAjout.addEventListener("submit", async (e) => {
 	formData.append("title", title);
 	formData.append("category", category);
 	try {
-		const response = await fetch("http://localhost:5678/api/works", {
-			method: "POST",
-			headers: {
-				Authorization: `Bearer ${token}`,
-			},
-			body: formData,
-		});
+		const response = await fetch(
+			"https://archiwebos.onrender.com/api/works",
+			{
+				method: "POST",
+				headers: {
+					Authorization: `Bearer ${token}`,
+				},
+				body: formData,
+			}
+		);
 		if (response.ok) {
 			let newWork = await response.json();
 			works.push(newWork);

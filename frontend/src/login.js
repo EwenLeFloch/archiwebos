@@ -9,13 +9,16 @@ loginForm.addEventListener("submit", async (event) => {
 	const email = emailInput.value;
 	const password = passwordInput.value;
 	try {
-		const response = await fetch("http://localhost:5678/api/users/login", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify({ email, password }),
-		});
+		const response = await fetch(
+			"https://archiwebos.onrender.com/api/users/login",
+			{
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({ email, password }),
+			}
+		);
 
 		if (response.ok) {
 			const data = await response.json();

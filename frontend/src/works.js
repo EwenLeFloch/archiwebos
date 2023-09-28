@@ -96,6 +96,7 @@ function displayWorks(works, container, isModal = false) {
 		// Images
 		const imageElement = document.createElement("img");
 		imageElement.src = work.imageUrl;
+		console.log(imageElement.src);
 		imageElement.alt = work.title;
 		figureElement.appendChild(imageElement);
 
